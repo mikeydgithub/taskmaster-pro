@@ -224,5 +224,24 @@ $(".card .list-group").sortable({
   }
 });
 
+$("#trash").droppable({ 
+  //jquery referencing id trash. droppable is the place where drops 
+  //can be made
+  accept: ".card .list-group-item",
+  // accepting card(s) and list-group-item(s) to be moved into droppable
+  tolerance: "touch",
+  // touch tolerance activates when items are moved from one droppable to another
+  drop: function(event, ui) {
+    ui.draggable.remove();//removed from the DOM
+    console.log("drop");
+  },//ui contains the property draggable
+  over: function(event, ui) {
+    console.log("over");
+  },//when the drop is over a droppable
+  out: function(event, ui) {
+    console.log("out");
+  }//when the drop is outside of a droppable
+});
+
 // load tasks for the first time
 loadTasks();
